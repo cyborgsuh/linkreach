@@ -1,8 +1,18 @@
-# linkedin-connector
+# linkreach
 
 A lightweight CLI toolkit to scrape your LinkedIn connections and send personalised outreach messages at a human pace, with built-in deduplication, cooldowns, and session persistence.
 
 > **Disclaimer:** Use responsibly and in accordance with [LinkedIn's User Agreement](https://www.linkedin.com/legal/user-agreement). Automated messaging may violate their ToS. This tool is for personal, educational use only.
+
+---
+
+## Inspiration
+
+I looked at my LinkedIn and realised I had 2,000+ connections full of people doing really interesting stuff — and I had never said a single word to most of them. 🤝
+
+So I built linkreach to actually do something about it. Reach out, start conversations, and connect with the people worth knowing. It keeps track of who you've already messaged so you never awkwardly double-tap someone, and spaces out messages so it feels human. 🚀
+
+Instead of letting all those interesting people just sit in a list, I built the thing that would actually get me talking to them.
 
 ---
 
@@ -29,8 +39,8 @@ A lightweight CLI toolkit to scrape your LinkedIn connections and send personali
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/cyborgsuh/linkedin-connector.git
-cd linkedin-connector
+git clone https://github.com/cyborgsuh/linkreach.git
+cd linkreach
 ```
 
 ### 2. Install dependencies
@@ -83,6 +93,8 @@ python send.py
 ```
 
 Picks a random batch of unmessaged contacts, shows them for review, lets you skip specific entries, then sends messages one by one with a random cooldown between each.
+
+Before sending to anyone, it navigates to their message thread and checks for existing conversation history. If a thread already exists, it skips that person regardless of their `messaged` flag in the CSV. No double-messaging.
 
 ---
 
