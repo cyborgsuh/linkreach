@@ -1,0 +1,24 @@
+# Personal config (copy config.example.py → config.py and fill in your details)
+config.py
+
+# Personal data — never commit
+*.csv
+message_log.txt
+
+# Browser session (contains saved cookies/credentials)
+pw-profile/
+
+# Testing artifacts
+send.ipynb
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
