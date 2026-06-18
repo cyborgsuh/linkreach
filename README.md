@@ -129,10 +129,10 @@ I'm [YOUR NAME] at [YOUR COMPANY]. ...
 
 The following are in `.gitignore` and will never be committed:
 
-- `*.csv` — contains personal contact data
-- `message_log.txt` — contains names and timestamps
-- `pw-profile/` — contains your LinkedIn session cookies
-- `config.py` — contains your personal message template
+- `*.csv` (personal contact data)
+- `message_log.txt` (names and timestamps)
+- `pw-profile/` (LinkedIn session cookies)
+- `config.py` (your personal message template)
 
 ---
 
