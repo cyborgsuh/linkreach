@@ -6,8 +6,8 @@ from browser import open_page, goto, logged_out
 from config import MESSAGE_TEMPLATE
 
 # ---------- CONFIG ----------
-CSV_FILE = ‘connections.csv’
-LOG_FILE = ‘message_log.txt’
+CSV_FILE = 'connections.csv'
+LOG_FILE = 'message_log.txt'
 
 SEND_LIMIT = 10
 MIN_DELAY = 60
@@ -91,7 +91,7 @@ def main():
     print("\n========== BATCH REVIEW ==========\n")
 
     for i, row in batch.iterrows():
-        print(f"[{i}] {row['First Name']} ({row['identitfier']})")
+        print(f"[{i}] {row['First Name']} ({row['identifier']})")
 
     print("\n-----------------------------------")
     skip_input = input(
@@ -109,10 +109,10 @@ def main():
     approved = []
 
     for i, row in batch.iterrows():
-        identifier = row["identitfier"]
+        identifier = row["identifier"]
 
         if i in skip_indices:
-            df.loc[df["identitfier"] == identifier, "messaged"] = True
+            df.loc[df["identifier"] == identifier, "messaged"] = True
             print(f"Skipped permanently: {row['First Name']}")
         else:
             approved.append(row)
@@ -136,7 +136,7 @@ def main():
         for person in approved:
             first_name = person["First Name"]
             last_name = person["Last Name"]
-            identifier = person["identitfier"]
+            identifier = person["identifier"]
 
             success = send_message(page, first_name, identifier, last_name)
 
@@ -145,7 +145,7 @@ def main():
                 break
 
             if success:
-                df.loc[df["identitfier"] == identifier, "messaged"] = True
+                df.loc[df["identifier"] == identifier, "messaged"] = True
                 df.to_csv(CSV_FILE, index=False)
 
             delay = random.randint(MIN_DELAY, MAX_DELAY)

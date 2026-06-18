@@ -1,6 +1,6 @@
 # linkedin-connector
 
-A lightweight CLI toolkit to scrape your LinkedIn connections and send personalised outreach messages at a human pace — with built-in deduplication, cooldowns, and session persistence.
+A lightweight CLI toolkit to scrape your LinkedIn connections and send personalised outreach messages at a human pace, with built-in deduplication, cooldowns, and session persistence.
 
 > **Disclaimer:** Use responsibly and in accordance with [LinkedIn's User Agreement](https://www.linkedin.com/legal/user-agreement). Automated messaging may violate their ToS. This tool is for personal, educational use only.
 
@@ -29,7 +29,7 @@ A lightweight CLI toolkit to scrape your LinkedIn connections and send personali
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/linkedin-connector.git
+git clone https://github.com/cyborgsuh/linkedin-connector.git
 cd linkedin-connector
 ```
 
@@ -54,13 +54,13 @@ Edit `config.py` and fill in your name, role, and message. This file is gitignor
 python login.py
 ```
 
-A browser window opens. Log into LinkedIn manually, then press **Enter** in the terminal. Your session is saved to `pw-profile/` and reused by all other scripts — you only need to do this once (or after your session expires).
+A browser window opens. Log into LinkedIn manually, then press **Enter** in the terminal. Your session is saved to `pw-profile/` and reused by all other scripts. You only need to do this once (or after your session expires).
 
 ---
 
 ## Usage
 
-### Step 1 — Scrape your connections
+### Step 1: Scrape your connections
 
 ```bash
 python scrape.py
@@ -68,7 +68,7 @@ python scrape.py
 
 Scrolls your LinkedIn connections page and writes/merges results into `Connections.csv`. Existing rows (and their `messaged` status) are preserved.
 
-### Step 2 — (Optional) Mark already-messaged contacts
+### Step 2: (Optional) Mark already-messaged contacts
 
 ```bash
 python mark_replied.py
@@ -76,7 +76,7 @@ python mark_replied.py
 
 Scrolls your LinkedIn inbox and marks any connections you've already messaged as `messaged=True` in the CSV. Run this before `send.py` to avoid double-messaging people.
 
-### Step 3 — Send messages
+### Step 3: Send messages
 
 ```bash
 python send.py
@@ -94,13 +94,13 @@ All config is at the top of `send.py`:
 CSV_FILE    = 'connections.csv'   # path to your connections CSV
 LOG_FILE    = 'message_log.txt'   # where sent messages are logged
 SEND_LIMIT  = 10                  # max messages per run
-MIN_DELAY   = 60                  # seconds — minimum wait between messages
-MAX_DELAY   = 160                 # seconds — maximum wait between messages
+MIN_DELAY   = 60                  # seconds, minimum wait between messages
+MAX_DELAY   = 160                 # seconds, maximum wait between messages
 ```
 
 ### Customise the message template
 
-Edit `MESSAGE_TEMPLATE` in `send.py`. Use `{first_name}` as the only placeholder:
+Edit `MESSAGE_TEMPLATE` in `config.py`. Use `{first_name}` as the only placeholder:
 
 ```python
 MESSAGE_TEMPLATE = """Hey {first_name},
@@ -120,10 +120,8 @@ I'm [YOUR NAME] at [YOUR COMPANY]. ...
 | `First Name` | Contact's first name |
 | `Last Name` | Contact's last name |
 | `URL` | Full LinkedIn profile URL |
-| `identitfier` | LinkedIn slug (the part after `/in/`) |
-| `messaged` | `True` / `False` — set automatically |
-
-> Note: the column is spelled `identitfier` (with a typo) — keep it as-is or update all references in the scripts.
+| `identifier` | LinkedIn slug (the part after `/in/`) |
+| `messaged` | `True` / `False`, set automatically |
 
 ---
 
@@ -134,6 +132,20 @@ The following are in `.gitignore` and will never be committed:
 - `*.csv` — contains personal contact data
 - `message_log.txt` — contains names and timestamps
 - `pw-profile/` — contains your LinkedIn session cookies
+- `config.py` — contains your personal message template
+
+---
+
+## Contributing
+
+Contributions are welcome. To get started:
+
+1. Fork the repo
+2. Create a branch: `git checkout -b your-feature`
+3. Make your changes and commit: `git commit -m "add your feature"`
+4. Push and open a PR against `master`
+
+Please keep PRs focused on a single change. If you're planning something big, open an issue first to discuss it.
 
 ---
 

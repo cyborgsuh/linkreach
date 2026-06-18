@@ -72,13 +72,13 @@ for slug, name in people.items():
         "First Name": parts[0],
         "Last Name": parts[1] if len(parts) > 1 else "",
         "URL": f"https://www.linkedin.com/in/{slug}",
-        "identitfier": slug,
+        "identifier": slug,
         "messaged": False,
     })
 
 new = pd.DataFrame(rows)
 old = pd.read_csv(CSV_FILE)
 # keep="first" preserves existing rows AND their messaged status; new uniques append as False.
-merged = pd.concat([old, new]).drop_duplicates(subset="identitfier", keep="first")
+merged = pd.concat([old, new]).drop_duplicates(subset="identifier", keep="first")
 merged.to_csv(CSV_FILE, index=False)
 print(f"Scraped {len(new)} | total {len(merged)} | added {len(merged) - len(old)} new.", flush=True)
