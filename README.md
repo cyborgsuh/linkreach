@@ -2,7 +2,7 @@
 
 A lightweight CLI toolkit to scrape your LinkedIn connections and send personalised outreach messages at a human pace, with built-in deduplication, cooldowns, and session persistence.
 
-> **Disclaimer:** Use responsibly and in accordance with [LinkedIn's User Agreement](https://www.linkedin.com/legal/user-agreement). Automated messaging may violate their ToS. This tool is for personal, educational use only.
+> **Disclaimer:** This tool automates interactions with LinkedIn, which **may violate LinkedIn's [User Agreement](https://www.linkedin.com/legal/user-agreement) and Terms of Service**. Use at your own risk. LinkedIn actively detects automation and **your account may be restricted, flagged, or permanently banned** as a result of using this tool. The author is **not responsible** for any account suspensions, bans, data loss, or any other consequences arising from use of this software. This tool is provided as-is, for personal and educational purposes only. By using it, you accept full responsibility for any outcomes.
 
 ---
 
