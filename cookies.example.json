@@ -1,0 +1,7 @@
+{
+  "_comment": "Copy this file to cookies.json and fill in real values from Chrome DevTools",
+  "_how": "F12 → Application → Cookies → https://www.linkedin.com",
+
+  "li_at": "AQEDATxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+  "JSESSIONID": "ajax:1234567890123456"
+}

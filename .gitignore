@@ -8,6 +8,15 @@ message_log.txt
 # Browser session (contains saved cookies/credentials)
 pw-profile/
 
+# Voyager API cookies (contains li_at session token)
+cookies.json
+
+# Chrome debug profile for cookie extraction
+chrome-debug-profile/
+
+# Voyager API (work in progress — not ready)
+voyager.py
+
 # Testing artifacts
 send.ipynb
 

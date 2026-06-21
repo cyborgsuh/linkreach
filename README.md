@@ -58,13 +58,27 @@ cp config.example.py config.py
 
 Edit `config.py` and fill in your name, role, and message. This file is gitignored so it stays local.
 
-### 4. Log in once
+### 4. Create your cookies file
+
+```bash
+cp cookies.example.json cookies.json
+```
+
+This file holds your LinkedIn session cookies and is gitignored. You'll fill it in the next step.
+
+### 5. Set up your session
 
 ```bash
 python login.py
 ```
 
-A browser window opens. Log into LinkedIn manually, then press **Enter** in the terminal. Your session is saved to `pw-profile/` and reused by all other scripts. You only need to do this once (or after your session expires).
+Two login methods are available — switch between them by setting `LOGIN_METHOD` at the top of `login.py`:
+
+**`"browser"` (default)** — opens a real Chrome window with a debug port, you log in manually, cookies are extracted and saved to `cookies.json` automatically.
+
+**`"manual"`** — prints step-by-step instructions to extract cookies from Chrome DevTools yourself and paste them into `cookies.json`. Use this if the browser method gets stuck.
+
+`send.py` auto-detects which auth is available — it uses `cookies.json` if present, falls back to `pw-profile/` if not, and errors with instructions if neither exists.
 
 ---
 
@@ -143,7 +157,9 @@ The following are in `.gitignore` and will never be committed:
 
 - `*.csv` (personal contact data)
 - `message_log.txt` (names and timestamps)
-- `pw-profile/` (LinkedIn session cookies)
+- `pw-profile/` (Playwright session profile)
+- `cookies.json` (extracted LinkedIn session cookies)
+- `chrome-debug-profile/` (temporary Chrome profile used by browser login)
 - `config.py` (your personal message template)
 
 ---
